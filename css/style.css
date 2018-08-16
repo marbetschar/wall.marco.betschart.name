@@ -1,0 +1,80 @@
+html.cream {
+    background: url(../images/walls/Cream.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+html.grey {
+    background: url(../images/walls/Grey.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+html.red {
+    background: url(../images/walls/Red.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+img {
+    /* position image */
+    display: block;
+    position: fixed;
+    top: 30%;
+    left: 20%;
+    transform: translate(-20%, -30%);
+    /* style frame */
+    border:solid 8px #fefefe;
+    box-shadow: 15px 15px 40px -5px rgba(0,0,0,0.3);
+}
+
+* {
+    font-family: 'Poiret One', cursive;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+blockquote {
+    position: fixed;
+    top: 27%;
+    left: 43%;
+    transform: translate(-10%, -27%);
+    color: #1D1D1D;
+}
+
+blockquote cite {
+    display:block;
+    font-size: initial;
+    margin-top:1em;
+    color: grey;
+}
+
+.grey blockquote {
+    color: #4C4C4C;
+}
+
+.grey blockquote cite {
+    color: #4C4C4C;
+}
+
+.red blockquote {
+    color: pink;
+}
+
+.red blockquote cite {
+    color: pink;
+}
+
+.cream blockquote {
+    color: #4C4C4C;
+}
+
+.cream blockquote cite {
+    color: #4C4C4C;
+}
