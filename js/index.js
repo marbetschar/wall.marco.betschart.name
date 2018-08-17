@@ -7,6 +7,14 @@ var data = {
             author: 'Clayton Christensen, Harvard Business Professor'
         }]
     },{
+        url: 'images/action-precedes-inspiration.jpg',
+        quotes: [{
+            text: 'This is the other secret that real artists know and wannabe writers don’t. When we sit down each day and do our work, power concentrates around us. The Muse takes note of our dedication. She approves. We have earned favor in her sight. When we sit down and work, we become like a magnetized rod that attracts iron filings. Ideas come. Insights accrete.',
+            author: 'Steven Pressfield'
+        },{
+            text: 'motivation, inspiration is not something you should wait for. Instead, it is something you need to design for and actively seek it!'
+        }]
+    },{
         url: 'images/behaviour-drives-motivation.jpg',
         quotes: [{
             text: 'You’re more likely to act yourself into feeling, than feeling yourself into action.',
@@ -41,6 +49,21 @@ var data = {
         quotes: [{
             text: 'The only way to truly experience the highest levels of transformation and “conscious evolution” is to detach from the need for specific outcomes.',
             author: 'Robert Kegan, Harvard Psychologist'
+        }]
+    },{
+        url: 'images/good-timber-does-not-grow-with-ease.jpg',
+        quotes: [{
+            text: 'The stronger wind, the stronger trees; The further sky, the greater length; The more the storm, the more the strength. By sun and cold, by rain and snow, In trees and men good timbers grow.',
+            author: 'Douglas Malloch'
+        }]
+    },{
+        url: 'images/gratitude-changes-things.jpg',
+        quotes: [{
+            text: 'When you change the way you see things, the things you see change.',
+            author: 'Dr. Wayne Dyer'
+        },{
+            text: 'If you make your prayers an expression of gratitude and thanksgiving for the blessings you have already received, instead of requests for what you do not have, you will obtain results a great deal faster.',
+            author: 'Napoleon Hill'
         }]
     },{
         url: 'images/nothing-happens-until-after-ships-are-burned.jpg',
@@ -79,6 +102,12 @@ var data = {
             author: 'The One Minute Millionaire'
         }]
     },{
+        url: 'images/when-the-why-is-strong-enough-you-figure-out-the-how.jpg',
+        quotes: [{
+            text: 'I think the ability of the average man could be doubled if it were demanded, if the situation demanded.',
+            author: 'Will Durant'
+        }]
+    },{
         url: 'images/when-you-make-a-decision-the-universe-conspires-to-make-it-happen.jpg',
         quotes: [{
             text: 'Whatever the mind can conceive and believe, it can achieve.',
@@ -101,13 +130,38 @@ var data = {
 
 var gallery = {
     render: function(data) {
-        var wallClassName = data.walls[Math.floor( Math.random() * data.walls.length)],
-            image = data.images[Math.floor( Math.random() * data.images.length)],
-            quote = image.quotes[Math.floor( Math.random() * image.quotes.length)];
+        var htmlElement = document.getElementsByTagName('html')[0],
+            imgElement = document.getElementsByTagName('img')[0],
+            blockquoteElement = document.getElementsByTagName('blockquote')[0];
 
-        document.getElementsByTagName('html')[0].className = wallClassName;
-        document.getElementsByTagName('img')[0].setAttribute('src', image.url);
-        document.getElementsByTagName('blockquote')[0].innerHTML = quote.text + '<cite>' + quote.author + '</cite>';
+        var oldHTMLClassName = htmlElement.className;
+        do {
+            htmlElement.className = data.walls[Math.floor( Math.random() * data.walls.length)];
+        } while( oldHTMLClassName === htmlElement.className );
+
+        var oldImageURL = imgElement.getAttribute('src');
+        var imageData = {};
+        do {
+            imageData = data.images[Math.floor( Math.random() * data.images.length)];
+        } while( oldImageURL === imageData.url )
+        imgElement.setAttribute('src', imageData.url);
+
+        var quote = imageData.quotes[Math.floor( Math.random() * imageData.quotes.length)];
+        var quoteHTML = quote.text;
+        if( quote.author ){
+            quoteHTML += '<cite>' + quote.author + '</cite>';
+        }
+        blockquoteElement.innerHTML = quoteHTML;
+    },
+
+    init: function(data){
+        var self = this;
+
+        var run = function(){
+            self.render(data);
+        };
+        setInterval(run, 5000 * 60); //every 5mins
+        run();
     }
 };
-gallery.render(data);
+gallery.init(data);
