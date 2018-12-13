@@ -1,7 +1,7 @@
 pages:
   stage: deploy
   script:
-    - mkdir public
+    - mkdir -p public
     - shopt -s extglob
     - mv !(public) public
   artifacts:
